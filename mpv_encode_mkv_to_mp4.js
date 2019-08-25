@@ -15,7 +15,7 @@ if (process.platform === "win32") {
 
 
 const venc = () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         console.log("Video encoders list:");
         console.log("1 - libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
         console.log("2 - libx265 H.265 / HEVC");
@@ -50,7 +50,7 @@ const venc = () => {
 };
 
 const aenc = () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         console.log("Audio encoders list:");
         console.log("1 - AAC (Advanced Audio Coding)");
         console.log("2 - FLAC (Free Lossless Audio Codec)");
@@ -85,7 +85,7 @@ const aenc = () => {
 };
 
 const crf = () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         rl.question('Select crf value (Leave empty for default - 18)', (answer) => {
 
             answer = Number.parseFloat(answer);
@@ -119,7 +119,7 @@ function fromDir(startPath,filter){
         else if (filename.indexOf(filter)>=0) {
             //console.log('-- found: ',filename);
             //console.log('mpv "'+ filename + '" --o "' + filename.replace('.mkv', '') + '.mp4" --sub-ass');
-            mpv_script += `mpv "${filename}" --o "` + filename.replace('.mkv', '') + `.mp4" --sub-ass ovc=${video_encoder} --oac=${audio_encoder} --ovcopts=crf=${crf_value}\n`;
+            mpv_script += `mpv "${filename}" --o "` + filename.replace('.mkv', '') + `.mp4" --sub-ass --ovc=${video_encoder} --oac=${audio_encoder} --ovcopts=crf=${crf_value}\n`;
         }
     }
     console.log(mpv_script);
