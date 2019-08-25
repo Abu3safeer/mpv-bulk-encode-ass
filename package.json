@@ -1,0 +1,9 @@
+{
+  "name": "mpv-bulk-encode-ass",
+  "version": "1.0.1",
+  "description": "nodejs script to bulk encode with ass subtitle.",
+  "main": "mpv_encode_mkv_to_mp4.js",
+  "bin": "mpv_encode_mkv_to_mp4.js", 
+  "author": "Abu3safeer",
+  "license": "MIT"
+}
